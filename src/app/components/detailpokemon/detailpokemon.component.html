@@ -1,0 +1,48 @@
+<div *ngIf="Singlepokemon" class="row">
+    <!-- Line above, check if pokemon were found  -->
+    <div class="col s12 m8 offset-m2">
+    <h2 class="header center">{{ Singlepokemon.name }}</h2>
+    <div class="card horizontal hoverable">
+      <div class="card-image">
+        <img [src]="Singlepokemon.picture">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <table class="bordered striped">
+            <tbody>
+              <tr>
+                <td>Nom</td>
+                <td><strong>{{ Singlepokemon.name }}</strong></td>
+              </tr>
+              <tr>
+                <td>Points de vie</td>
+                <td><strong>{{ Singlepokemon.hp }}</strong></td>
+              </tr>
+              <tr>
+                <td>Dégâts</td>
+                <td><strong>{{ Singlepokemon.cp }}</strong></td>
+              </tr>
+              <tr>
+                <td>Types</td>
+                <td>
+                  <!-- class coming from materialize css  -->
+                  <span *ngFor="let item of Singlepokemon.types" class="{{ item | pokemontypecolors}}">{{ item }}</span>
+                </td>
+              </tr>
+              <tr>
+                <td>Date de création</td>
+                <td><em>{{ Singlepokemon.created | date:"dd/MM/yyyy" }}</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-action">
+          <a (click)="goBack()" class="waves-effect waves-light btn">Retour</a>
+          <a (click)="goEdit(Singlepokemon)" class="waves-effect waves-light btn">Editer</a>
+          <a (click)="delete(Singlepokemon)">Supprimer</a>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+    <h4 *ngIf='!Singlepokemon' class="center"><app-loading></app-loading></h4>

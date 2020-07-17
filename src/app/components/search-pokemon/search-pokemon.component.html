@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col s12 m6 offset-m3">
+      <div class="card">
+        <div class="card-content">
+          <div class="input-field">
+              <!-- Au fur a mesure que la personne tape dans la barre de recherche, cela va appeler la fonction a chaque tape -->
+            <input #searchBox (keyup)="search(searchBox.value)"
+              placeholder="Rechercher un pokémon"/>
+          </div>
+    
+          <div class="collection">
+              <!-- async (obligatoire )=> affiche le resultat que si l'observable a trouvé une réponse et syncrhonise la propriété du composant avec la view -->
+              <!-- il a un $ => pas une propriété simple mais une observable -->
+            <a *ngFor="let pokemon of pokemons$ | async"
+              (click)="gotoDetail(pokemon)" class="collection-item">
+              {{ pokemon.name }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

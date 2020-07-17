@@ -1,0 +1,25 @@
+<h1 class='center'>Pokémons</h1>
+<input #box (keyup.enter)="item=box.value" (blur)="item=box.value">
+<p>{{box.value}}</p>
+<div class='container'>
+<div class="row">
+<app-search-pokemon></app-search-pokemon>
+<div *ngFor='let pokemon of pokemons' class="col s6 m4">
+  <!-- appbordercard comes from directive, imported in app module , you need to use #### , normal colors do not work ? -->
+  <div class="card horizontal" (click)="selectPokemon(pokemon)" appBordercard="#000000">
+    <div class="card-image">
+      <img [src]="pokemon.picture">
+    </div>
+    <div class="card-stacked">
+      <div class="card-content">
+        <p>{{ pokemon.name }}</p>
+        <p><small>{{ pokemon.created | date:"dd/MM/yyyy"}}</small></p>
+        <!-- class returned by the pipe (type =  type of pokemon , apply the -->
+        <!-- type of pokemon.types ==> pokemon come from pokemon in ngFor -->
+        <span *ngFor= 'let type of pokemon.types' class='{{type | pokemontypecolors}}'>{{type}}</span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>

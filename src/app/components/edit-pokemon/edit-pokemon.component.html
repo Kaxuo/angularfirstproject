@@ -1,0 +1,6 @@
+<h2 class="header center">Editer {{ Singlepokemon?.name }}</h2>
+<p class="center">
+    <img *ngIf="Singlepokemon" [src]="Singlepokemon.picture"/>
+</p>
+<!-- [pokemon] will match what's used in apppokemonform , it's like passing props -->
+<app-pokemon-form [pokemon]="Singlepokemon"></app-pokemon-form>
