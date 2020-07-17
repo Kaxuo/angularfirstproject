@@ -10,10 +10,10 @@ import { AuthenticationService } from './../../services/authentication.service';
 export class LoginFOrmComponent implements OnInit {
 
      message: string = 'Vous êtes déconnecté. (admin/admin)';
-    private name: string;
-    private password: string;
+     name: string;
+     password: string;
   
-    constructor(private authService: AuthenticationService, private router: Router) { }
+    constructor(public authService: AuthenticationService,  public router: Router) { }
   
     // Informe l'utilisateur sur son authentfication.
     setMessage() {
